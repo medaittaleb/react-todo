@@ -1,6 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+:root{
+  --color1: #2C3639;
+  --color2: #3F4E4F;
+  --color3: #A27B5C;
+  --color4: #DCD7C9;
+}
+
 body {
   margin: 0;
   min-width: 250px;
+  background: var(--color2);
+  font-family: 'Lato', sans-serif;
 }
 
 /* Include the padding and border in an element's total width and height */
@@ -14,15 +26,22 @@ ul {
   padding: 0;
 }
 
+.list-todos{
+  padding: 15px;
+  background: var(--color1);
+}
+
 /* Style the list items */
-ul li {
+ul.todos li.todo {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
   list-style-type: none;
-  background: #eee;
+  background: var(--color4);
   font-size: 18px;
   transition: 0.2s;
+  color: var(--color1);
+  margin: 6px 0px;
   
   /* make the list items unselectable */
   -webkit-user-select: none;
@@ -31,28 +50,24 @@ ul li {
   user-select: none;
 }
 
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
 /* Darker background-color on hover */
-ul li:hover {
-  background: #ddd;
+ul.todos li.todo:hover {
+  background: var(--color2);
+  color: var(--color4);
 }
 
 /* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: #fff;
+ul.todos li.todo.checked {
+  background: var(--color2);
+  color: var(--color4);
   text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked::before {
+ul.todos li.todo.checked::before {
   content: '';
   position: absolute;
-  border-color: #fff;
+  border-color: var(--color4);
   border-style: solid;
   border-width: 0 2px 2px 0;
   top: 10px;
@@ -62,27 +77,16 @@ ul li.checked::before {
   width: 7px;
 }
 
-/* Style the close button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #f44336;
-  color: white;
-}
-
 /* Style the header */
 .header {
-  background-color: #f44336;
-  padding: 30px 40px;
-  color: white;
+  background-color: var(--color3);
+  padding: 25px 20px;
+  color: var(--color4);
   text-align: center;
 }
-
+.header h2 {
+  margin-top: 0;
+}
 /* Clear floats after the header */
 .header:after {
   content: "";
@@ -91,30 +95,70 @@ ul li.checked::before {
 }
 
 /* Style the input */
-input {
+.newtitle {
   margin: 0;
   border: none;
   border-radius: 0;
   width: 75%;
   padding: 10px;
+  height: 50px;
   float: left;
   font-size: 16px;
+  background: var(--color2);
+  color: var(--color4);
+}
+.newtitle::placeholder{
+  color: var(--color4);
+  font-size: 18px;
 }
 
 /* Style the "Add" button */
 .addBtn {
   padding: 10px;
+  height: 50px;
   width: 25%;
-  background: #d9d9d9;
-  color: #555;
+  background: var(--color4);
+  color: var(--color1);
   float: left;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 30px;
   cursor: pointer;
   transition: 0.3s;
   border-radius: 0;
 }
 
 .addBtn:hover {
-  background-color: #bbb;
+  background-color: var(--color1);
+  color: var(--color4);
+}
+
+
+.wrapper {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+li.todo{
+  position: relative;
+}
+
+.remv-todo {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
+  background: var(--color3);
+  color: var(--color4);
+  border: 0;
+  cursor: pointer;
+}
+
+button.remv-todo:hover {
+  color: var(--color1);
+  opacity: .7;
 }
